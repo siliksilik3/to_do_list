@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>To Do List</title>
+</head>
+<body>
+    <div class="task">
+        <% task.forEach(element => { %>
+            <h3><%=element.task_name%></h3> 
+            <form action="/update/<%=element.id %>" method="post">
+        
+                <button type="submit">Update</button>
+            </form>
+               
+            
+            <form action="/delete/<%=element.id %>" method="post">
+                <button type="submit">Delete</button>
+            </form>
+            <input type="checkbox" name="Update" id="Update">
+          
+    <% }); %>
+    
+   <form action="/add" method="post" style="display: flex;">
+    <label for="task">New Task:</label>
+    <input type="text" id="taks" name="task">
+    <input type="date" name="date" id="date">
+    <input type="submit" value="Submit">
+   </form>
+</div>
+   
+    <script>
+        
+        </script>
+</body>
+</html>
