@@ -70,9 +70,10 @@ app.post("/update/:id", async (req, res)=>{
     try {
         await db.query(
             "UPDATE list SET task_name=$1 WHERE id=$2 ;", 
-            [req.body["task"], req.params.id]
+            [req.body["task_update"], req.params.id]
         );
         console.log(req.params.id);
+        console.log(req.body["task_update"]);
         res.redirect("/");
     } catch (err) {
         console.log(err);

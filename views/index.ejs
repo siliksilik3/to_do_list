@@ -9,17 +9,20 @@
 <body>
     <div class="task">
         <% task.forEach(element => { %>
-            <h3><%=element.task_name%></h3> 
-            <form action="/update/<%=element.id %>" method="post">
-        
-                <button type="submit">Update</button>
-            </form>
-               
+            <div id="visible">
+                <h3><%=element.task_name%></h3> 
+                
+                <form action="/delete/<%=element.id %>" method="post">
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+            <div id="upd" >
+                <form action="/update/<%=element.id %>" method="post">
+                    <button type="submit">Update</button>
+                    <input type="text" id="task_update" name="task_update"><%=element.task_name %></input>
+                </form>
+            </div>
             
-            <form action="/delete/<%=element.id %>" method="post">
-                <button type="submit">Delete</button>
-            </form>
-            <input type="checkbox" name="Update" id="Update">
           
     <% }); %>
     
@@ -31,8 +34,6 @@
    </form>
 </div>
    
-    <script>
-        
-        </script>
+    <script type="module" src="/Pet-projects/toDo/main.js"></script>
 </body>
 </html>
