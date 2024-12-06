@@ -9,7 +9,7 @@ const db= new pg.Client({
     user: "postgres",
     host: "localhost",
     database: "To_Do",
-    password:"gasnauter",
+    password:"",
     port: 5432,
 });
 db.connect();
@@ -20,7 +20,7 @@ app.use(express.static("public"));
 
 async function checkList() {
     const result= await db.query(
-        "SELECT id, task_name, deadline FROM list"
+        "SELECT id, task_name, deadline FROM list ORDER BY id ASC"
     );
 let list=[];
 

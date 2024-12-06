@@ -8,32 +8,47 @@
 </head>
 <body>
     <div class="task">
-        <% task.forEach(element => { %>
-            <div id="visible">
-                <h3><%=element.task_name%></h3> 
-                
+        <% task.forEach((element, index) => { %>
+            <div class="const" style="display: flex; gap: 100px; margin: 50px; background-color: azure;">
+                <h3 class="text"><%=element.task_name%></h3>
                 <form action="/delete/<%=element.id %>" method="post">
                     <button type="submit">Delete</button>
                 </form>
+                <button class="trig" data-index="<%=index%>">UPDATE</button>
             </div>
-            <div id="upd" >
+                
+            <div class="upd" style="display: none; gap: 100px; margin: 50px; background-color: azure;">
                 <form action="/update/<%=element.id %>" method="post">
                     <button type="submit">Update</button>
-                    <input type="text" id="task_update" name="task_update" value="<%=element.task_name %>">
+                    <input type="text" class="task_update" name="task_update" value="<%=element.task_name %>">
                 </form>
             </div>
-            
-          
-    <% }); %>
+        <% }); %>
     
-   <form action="/add" method="post" style="display: flex;">
-    <label for="task">New Task:</label>
-    <input type="text" id="taks" name="task">
-    <input type="date" name="date" id="date">
-    <input type="submit" value="Submit">
-   </form>
-</div>
+        <form action="/add" method="post" style="display: flex;">
+            <label for="task">New Task:</label>
+            <input type="text" id="taks" name="task">
+            <input type="date" name="date" id="date">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    
    
-    <script type="module" src="/Pet-projects/toDo/main.js"></script>
+    <script>
+        document.querySelectorAll(".trig").forEach((button, index) => {
+    button.addEventListener("click", () => {
+        const constDiv = document.querySelectorAll(".const")[index];
+        const updDiv = document.querySelectorAll(".upd")[index];
+
+        if (constDiv.style.display === "none") {
+            constDiv.style.display = "flex";
+            updDiv.style.display = "none";
+        } else {
+            constDiv.style.display = "none";
+            updDiv.style.display = "flex";
+        }
+    });
+});
+    </script>
 </body>
 </html>
